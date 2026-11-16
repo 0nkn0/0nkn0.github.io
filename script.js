@@ -21,6 +21,45 @@ document.addEventListener("keydown", (event) => {
 
 document.querySelector("#current-year").textContent = new Date().getFullYear();
 
+document.querySelectorAll(".project-description").forEach((description, index) => {
+  let toggle;
+  let expanded = false;
+
+  function updateDescription() {
+    description.classList.remove("is-collapsed");
+    const lineHeight = Number.parseFloat(getComputedStyle(description).lineHeight);
+    const isLong = description.getBoundingClientRect().height > lineHeight * 4 + 1;
+
+    if (!isLong) {
+      description.classList.remove("is-collapsed");
+      toggle?.remove();
+      toggle = undefined;
+      expanded = false;
+      return;
+    }
+
+    if (!toggle) {
+      description.id = description.id || `project-description-${index + 1}`;
+      toggle = document.createElement("button");
+      toggle.className = "project-description-toggle";
+      toggle.type = "button";
+      toggle.setAttribute("aria-controls", description.id);
+      toggle.addEventListener("click", () => {
+        expanded = !expanded;
+        updateDescription();
+      });
+      description.after(toggle);
+    }
+
+    description.classList.toggle("is-collapsed", !expanded);
+    toggle.textContent = expanded ? "Voir moins" : "Voir plus";
+    toggle.setAttribute("aria-expanded", String(expanded));
+  }
+
+  updateDescription();
+  window.addEventListener("resize", updateDescription);
+});
+
 document.querySelectorAll(".project-gallery").forEach((gallery) => {
   const track = gallery.querySelector(".project-gallery-track");
   const slides = [...track.querySelectorAll(".gallery-slide")];
