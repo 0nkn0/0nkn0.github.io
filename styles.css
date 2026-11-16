@@ -1,4 +1,4 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap");
 
 html { scroll-behavior: smooth; }
 body { margin: 0; font-family: "Work Sans", sans-serif; -webkit-font-smoothing: antialiased; }
@@ -168,6 +168,10 @@ body { margin: 0; font-family: "Work Sans", sans-serif; -webkit-font-smoothing: 
 .project-info h3 { max-width: 440px; margin: 0; font-family: var(--portfolio-font-display); font-size: 20px; font-weight: 600; line-height: 1.35; }
 .project-number { position: absolute; top: 17px; right: 0; color: var(--portfolio-muted); font-size: 11px; }
 .project-description { max-width: 450px; margin: 13px 0; color: var(--portfolio-ink-soft); font-size: 12px; line-height: 1.75; }
+.project-description.is-collapsed { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 4; }
+.project-description-toggle { display: block; margin: -5px 0 13px; padding: 0; border: 0; background: transparent; color: var(--portfolio-clay); font: inherit; font-size: 11px; font-weight: 600; cursor: pointer; }
+.project-description-toggle:hover { text-decoration: underline; }
+.project-description-toggle:focus-visible { outline: 2px solid var(--portfolio-clay); outline-offset: 3px; }
 .tag-list { display: flex; flex-wrap: wrap; gap: 7px; }
 .tag-list span { padding: 6px 8px; border: 1px solid var(--portfolio-line); border-radius: 2px; color: var(--portfolio-ink-soft); font-size: 9px; }
 .career { display: grid; grid-template-columns: 180px 1fr; gap: 50px; border-top: 1px solid var(--portfolio-line); }
